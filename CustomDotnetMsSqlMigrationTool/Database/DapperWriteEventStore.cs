@@ -6,7 +6,7 @@ using Models;
 
 namespace Database
 {
-    public class DapperReadEventStore
+    public class DapperWriteEventStore
     {
         private const string READ_QUERY =
             @"
@@ -27,8 +27,8 @@ namespace Database
         ";
 
         /*
-        /  Used when migrating part of data
-        */
+         * Used when migrating the whole database for faster performance
+         */
         public async Task<List<EventPayload>> ReadFrom(DateTime initialSinceTime, int batchSize)
         {
             var sinceTime = initialSinceTime;
